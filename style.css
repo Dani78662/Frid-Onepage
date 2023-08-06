@@ -1,0 +1,482 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #c69963;
+  --color-primary-dark: #b28451;
+  --color-secondary: rgb(16, 29, 44);
+  --color-grey-light-1: #f9f7f6;
+  --color-grey-light-2: #aaa;
+  --color-grey-dark-1: #54483a;
+  --color-grey-dark-2: #6d5d4b;
+  --font-primary: "Nunito", sans-serif;
+  --font-display: "Josefin Sans", sans-serif;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  overflow-x: hidden;
+}
+
+body {
+  width: 100%;
+  height: auto;
+  font-family: var(--font-primary);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 6rem 1fr repeat(6, minmax(20rem, 1fr)) 1fr;
+  grid-template-rows: 75vh min-content 40vw repeat(3, min-content);
+  grid-template-areas:
+    "nav header header header header header realtors realtors realtors"
+    "nav . services services services services services services ."
+    "nav goals goals goals goals story story story story"
+    "nav . homes homes homes homes homes homes ."
+    "nav gallery gallery gallery gallery gallery gallery gallery gallery"
+    "nav footer footer footer footer footer footer footer footer";
+}
+/* NAVBAR */
+.nav {
+  grid-area: nav;
+  background-color: var(--color-primary);
+  padding-top: 1rem;
+  height: 207%;
+}
+
+nav {
+  cursor: pointer;
+  width: 3.3rem;
+  height: 2.6rem;
+  position: relative;
+  top: 0;
+  left: 20%;
+}
+
+.nav nav .nav-icon {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-grey-light-1);
+  position: relative;
+  top: 1rem;
+}
+
+.nav nav .nav-icon::before,
+.nav nav .nav-icon::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-grey-light-1);
+  top: -1rem;
+}
+
+.nav nav .nav-icon::after {
+  top: 1rem;
+}
+
+/* HEADER  */
+.header {
+  grid-area: header;
+  background: linear-gradient(rgba(16, 29, 44, 0.7), rgba(16, 29, 44, 0.8)),
+    url("./assets/img/hero.jpeg") no-repeat center center/cover;
+  display: grid;
+  background-size: 100%;
+  grid-template-rows: minmax(5rem, 1fr) repeat(2, min-content) minmax(5rem, 1fr) repeat(2,min-content );
+  padding: 7rem;
+  padding-top: 3rem;
+  color: white;
+  grid-gap: 2rem;
+  width: 100%;
+}
+
+.header .logo {
+  justify-self: center;
+}
+
+.header .logo img {
+  height: 3rem;
+}
+
+.header h4 {
+  font-family: var(--font-primary);
+  font-size: 1.6rem;
+  color: var(--color-primary-dark);
+  font-weight: 700;
+}
+
+.header h1 {
+  font-family: var(--font-display);
+  font-size: 3.2rem;
+  color: var(--color-grey-light-1);
+  font-weight: 700;
+}
+
+.header button {
+  align-self: start;
+  font-size: 1.7rem;
+  font-family: var(--font-display);
+  background: var(--color-primary);
+  justify-self: start;
+  font-weight: lighter;
+  color: white;
+  padding: 1.2rem 1.4rem;
+  border: none;
+  cursor: pointer;
+}
+.header button:hover{
+  background-color: #b28451;
+}
+
+.header .seenon {
+  color: var(--color-grey-light-1);
+  font-size: 1.5rem;
+  font-family: var(--font-display);
+  justify-self: center;
+  position: relative;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.header .seenon::before,
+.header .seenon::after {
+  content: "";
+  position: absolute;
+  background-color: var(--color-grey-light-1);
+  width: 330px;
+  height: 1px;
+  left: -350px;
+  top: 6px;
+}
+
+.header .seenon::after {
+  left: 70px;
+  width: 330px;
+}
+
+.header .logos {
+  display: grid;
+  grid-template-columns: repeat(4,minmax(min-content,1fr));
+  justify-items: center;
+}
+
+.header .logos img {
+  height: 3rem;
+  width: 75%;
+}
+
+/* REALTORS  */
+.realtors {
+  grid-area: realtors;
+  background-color: var(--color-secondary);
+color: white;
+display: grid;
+align-content: center;
+grid-row-gap: 3rem;
+font-family: 'Times New Roman', Times, serif;
+}
+.realtors h1{
+  justify-self: center;
+  font-weight: bold;
+  font-size: 2em ;
+}
+.realtorList{
+display: grid;
+grid-template-columns: min-content max-content;
+grid-column-gap: 2rem;
+grid-row-gap: 4vh;
+justify-content: center;
+align-items: center;
+}
+.realtorList img{
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+}
+
+/* SERVICES  */
+.services {
+  grid-area: services;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    grid-column-gap: 2rem;
+    grid-row-gap: 8rem;
+    margin: 20rem 0;
+}
+.service {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  grid-row-gap: 1rem;
+  grid-column-gap: 2rem;
+  align-content: start;
+}
+ .serviceIcon {
+  width: 5rem;
+  height: 5rem;
+  grid-row: 1 / span 2;
+  fill: var(--color-primary);
+} 
+.serviceHeading {
+  font-size: 2rem;
+  font-family: var(--font-display);
+}
+.serviceContent {
+  font-size: 1.8rem;
+  line-height: 2.5rem;
+}
+
+/* GOAL  */
+.goals {
+  grid-area: goals;
+    background: linear-gradient(rgba(198, 153, 99, 0.5), rgba(198, 153, 99, 0.5)), url(./assets/img/back.jpg);
+    background-size: 100% 100%, cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    position: relative;
+}
+.goalsCenter {
+  width: 70%;
+  height: 50%;
+}
+.goalsOut {
+  width: 60%;
+  height: 40%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+}
+
+/* STORY  */
+.story {
+  grid-area: story;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 6rem 12rem;
+  background: var(--color-grey-light-1);
+}
+
+.story p {
+  font-size: 1.6rem;
+  font-family: var(--font-display);
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+.story h1 {
+  font-size: 3.2rem;
+  font-family: var(--font-primary);
+  color: var(--color-grey-dark-1);
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+.story .contentStory {
+  font-size: 1.6rem;
+  font-family: var(--font-primary);
+  color: var(--color-grey-dark-2);
+  margin-bottom: 3rem;
+  font-weight: lighter;
+  line-height: 2.3rem;
+  font-style: italic;
+}
+.story h3 {
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  color: white;
+  font-weight: lighter;
+  background: var(--color-primary);
+  justify-self: start;
+  padding: 1.8rem 3rem;
+  cursor: pointer;
+}
+.story h3:hover{
+  background-color: #b28451;
+}
+/* HOME */
+.homes {
+  grid-area: homes;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+  grid-gap: 10rem;
+  margin: 10rem;
+  
+}
+.home {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  background: var(--color-grey-light-1);
+  justify-items: center;
+  align-items: center;
+}
+.homeImg {
+  grid-column: 1 / span 2;
+  background: lightcoral;
+  position: relative;
+  margin-bottom: 3.5rem;
+}
+.imgCommon {
+  width: 100%;
+}
+.homeDetailBtn {
+  background: black;
+  color: white;
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  width: 80%;
+  padding: 1.5rem 0;
+  position: absolute;
+  bottom: -2rem;
+  text-align: center;
+  left: 10%;
+}
+
+.heartIcon {
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  top: 3%;
+  right: 4%;
+  cursor: pointer;
+  font-size: 3rem;
+  color: white;
+}
+.heartIcon i:hover{
+  color: rgb(255, 0, 0);
+}
+
+.homeInfo {
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-family: var(--font-display);
+  color: var(--color-grey-dark-2);
+}
+.contactRealtorBtn {
+  grid-column: 1 / span 2;
+  background: var(--color-primary);
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 1.7rem;
+  font-size: 2rem;
+  font-family: var(--font-display);
+  color: white;
+  margin-top: 2rem;
+  text-align: center;
+  cursor: pointer;
+}
+.contactRealtorBtn:hover{
+  background-color: var(--color-primary-dark);
+}
+
+/* GALLERY  */
+.gallery {
+  grid-area: gallery;
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(7, 6vw);
+    grid-gap: 1.5rem;
+    padding: 1.5rem;
+    margin: 7rem;
+}
+.gallery img{
+    width: 100%;
+    height: 100%;
+}
+.pic1 {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+.pic2 {
+  grid-column: 3 / span 3;
+  grid-row: 1 / span 3;
+}
+.pic3 {
+  grid-column: 6 / span 1;
+  grid-row: 1 / span 2;
+}
+.pic4 {
+  grid-column: 7 / span 2;
+  grid-row: 1 / span 2;
+}
+.pic5 {
+  grid-column: 1 / span 2;
+  grid-row: 3 / span 3;
+}
+.pic6 {
+  grid-column: 3 / span 2;
+  grid-row: 4 / span 2;
+}
+.pic7 {
+  grid-column: 5 / span 1;
+  grid-row: 4 / span 1;
+}
+.pic8 {
+  grid-column: 6 / span 2;
+  grid-row: 3 / span 2;
+}
+.pic9 {
+  grid-column: 8 / span 1;
+  grid-row: 3 / span 3;
+}
+.pic10 {
+  grid-column: 1 / span 1;
+  grid-row: 6 / span 2;
+}
+.pic11 {
+  grid-column: 2 / span 2;
+  grid-row: 6 / span 2;
+}
+.pic12 {
+  grid-column: 4 / span 1;
+  grid-row: 6 / span 2;
+}
+.pic13 {
+  grid-column: 5 / span 3;
+  grid-row: 5 / span 3;
+}
+.pic14 {
+  grid-column: 8 / span 1;
+  grid-row: 6 / span 2;
+}
+.pic {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* FOOTER  */
+.footer {
+  grid-area: footer;
+    background: var(--color-secondary);
+    padding: 3rem;
+}
+.list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  color: white;
+  justify-items: center;
+  grid-gap: 3rem;
+  align-items: center;
+}
+.listItem {
+  font-size: 1.6rem;
+  font-family: var(--font-primary);
+  font-weight: lighter;
+  padding: 1.5rem;
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 2rem;
+  cursor: pointer;
+}
+.footer  p {
+  font-size: 1.4rem;
+  color: white;
+  width: 70%;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 4rem;
+}
